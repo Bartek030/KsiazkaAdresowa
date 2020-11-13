@@ -421,7 +421,9 @@ void usunPojedynczegoAdresata(vector<Adresat> &listaAdresatow) {
             czyChceszUsunacKolejnegoAdresata = zapytajOMozliwoscPonownegoWykonania();
         }
     } while(czyChceszUsunacKolejnegoAdresata);
-    aktualizujPlikPoUsunieciu(listaIdAdresatowDoUsuniecia);
+    if(!listaIdAdresatowDoUsuniecia.empty()) {
+        aktualizujPlikPoUsunieciu(listaIdAdresatowDoUsuniecia);
+    }
     wyswietlOpcjePowrotuDoMenuUsuwania();
 }
 void usunAdresata(vector<Adresat> &listaAdresatow) {
@@ -540,7 +542,7 @@ void edycjaWybranegoAdresata(Adresat &edytowanyAdresat) {
             system("cls");
             switch(wybranaOpcja) {
             case 1:
-                cout << "Podaj nowe imie\251:" << endl;
+                cout << "Podaj nowe imi\251:" << endl;
                 cin >> wczytanyElement;
                 zamienPierwszaLitereNaDuzaAReszteNaMala(wczytanyElement);
                 edytowanyAdresat.imie = wczytanyElement;
@@ -624,7 +626,9 @@ void edytujAdresata (vector<Adresat> &listaAdresatow, char separator) {
             czyChceszEdytowacKolejnegoAdresata = zapytajOMozliwoscPonownegoWykonania();
         }
     } while(czyChceszEdytowacKolejnegoAdresata);
-    aktualizujPlikPoEdycji(listaAdresatow, listaIdAdresatowDoEdycji);
+    if (!listaIdAdresatowDoEdycji.empty()) {
+        aktualizujPlikPoEdycji(listaAdresatow, listaIdAdresatowDoEdycji);
+    }
     wyswietlOpcjePowrotuDoMenuGlownego();
 }
 void aktualizujPlikPoZmianieHasla(vector<Uzytkownik> &listaUzytkownikow, int iloscUzytkownikow) {
